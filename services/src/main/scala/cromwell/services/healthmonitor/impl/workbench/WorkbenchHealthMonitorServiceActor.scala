@@ -34,7 +34,7 @@ class WorkbenchHealthMonitorServiceActor(val serviceConfig: Config, globalConfig
   private lazy val Papi = MonitoredSubsystem("PAPI", checkPapi _)
 
   val googleConfig = GoogleConfiguration(globalConfig)
-  val papiBackendName = serviceConfig.as[Option[String]]("services.HealthMonitor.PapiBackendName").getOrElse("Jes")
+  val papiBackendName = serviceConfig.as[Option[String]]("services.HealthMonitor.config.PapiBackendName").getOrElse("Jes")
   val papiConfig: Config = globalConfig.as[Config]("backend.providers.Jes.config")
 
   /**
@@ -44,6 +44,10 @@ class WorkbenchHealthMonitorServiceActor(val serviceConfig: Config, globalConfig
     */
   private def checkGcs(): Future[SubsystemStatus] = {
     import WorkbenchHealthMonitorServiceActor.GcsBucketToCheck
+
+    // For any expected production usage of this check, the GCS bucket should be public read */
+    val gcsBucketToCheck = serviceConfig.as[String]("services.HealthMonitor.config.GcsBucketToCheck")
+
     val gcsAuthName = papiConfig.as[String]("filesystems.gcs.auth")
 
     val cred = googleConfig.auth(gcsAuthName) match {
