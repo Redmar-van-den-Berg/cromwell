@@ -95,7 +95,7 @@ trait HealthMonitorServiceActor extends Actor with LazyLogging with Timers {
 object HealthMonitorServiceActor {
   val DefaultFutureTimeout: FiniteDuration = 1 minute
   val DefaultStaleThreshold: FiniteDuration = 15 minutes
-  val DefaultSweepTime: FiniteDuration = 1 minute // FIXME 5 minutes
+  val DefaultSweepTime: FiniteDuration = 5 minutes
 
   private case object CheckTickKey
 
