@@ -68,7 +68,7 @@ trait HealthMonitorServiceActor extends Actor with LazyLogging with Timers {
         failedStatus(ex.getMessage)
       } map {
       Store(subsystem, _)
-    } pipeTo self
+    } pipeTo self // Piping this instead of calling store() directly so as to not modify actor state inside the Future
 
     ()
   }
