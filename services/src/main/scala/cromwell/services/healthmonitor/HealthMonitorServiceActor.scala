@@ -2,7 +2,7 @@ package cromwell.services.healthmonitor
 
 import java.util.concurrent.TimeoutException
 
-import akka.actor.{Actor, Scheduler, Timers}
+import akka.actor.{Actor, Scheduler, Status, Timers}
 import akka.pattern.{after, pipe}
 import cromwell.util.GracefulShutdownHelper.ShutdownCommand
 import com.typesafe.scalalogging.LazyLogging
@@ -57,6 +57,7 @@ trait HealthMonitorServiceActor extends Actor with LazyLogging with Timers {
     case Store(subsystem, status) => store(subsystem, status)
     case GetCurrentStatus => sender ! getCurrentStatus
     case ShutdownCommand => context.stop(self) // Not necessary but service registry requires it. See #2575
+    case Status.Failure(f) => throw f
   }
 
   private def checkSubsystem(subsystem: MonitoredSubsystem): Unit = {

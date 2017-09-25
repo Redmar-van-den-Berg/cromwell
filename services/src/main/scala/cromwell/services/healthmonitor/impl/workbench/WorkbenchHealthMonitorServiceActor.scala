@@ -43,8 +43,6 @@ class WorkbenchHealthMonitorServiceActor(val serviceConfig: Config, globalConfig
     * available.
     */
   private def checkGcs(): Future[SubsystemStatus] = {
-    import WorkbenchHealthMonitorServiceActor.GcsBucketToCheck
-
     // For any expected production usage of this check, the GCS bucket should be public read */
     val gcsBucketToCheck = serviceConfig.as[String]("services.HealthMonitor.config.GcsBucketToCheck")
 
@@ -56,7 +54,7 @@ class WorkbenchHealthMonitorServiceActor(val serviceConfig: Config, globalConfig
     }
 
     val storage = cred map { c => GcsStorage.gcsStorage(googleConfig.applicationName, c) }
-    storage map { _.buckets.get(GcsBucketToCheck).execute() } as OkStatus
+    storage map { _.buckets.get(gcsBucketToCheck).execute() } as OkStatus
   }
 
   /**
@@ -78,10 +76,3 @@ class WorkbenchHealthMonitorServiceActor(val serviceConfig: Config, globalConfig
   }
 }
 
-object WorkbenchHealthMonitorServiceActor {
-  /*
-    A bucket which is publicly readable. We might be authing to GCS with per-user credentials which means that we don't
-    have generic Cromwell-level access to any private well known location.
-   */
-  val GcsBucketToCheck = "cromwell-health-check"
-}

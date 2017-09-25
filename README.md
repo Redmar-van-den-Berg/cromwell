@@ -4038,7 +4038,7 @@ Response:
 
 ## GET /engine/:version/status
 
-Cromwell will track the status of underlying systems on which it depends, typically connectivity to the database and to Dockerhub. The `status` endpoint will return the current status of these systems. 
+Cromwell will track the status of underlying systems on which it depends, typically connectivity to the database and to Docker Hub. The `status` endpoint will return the current status of these systems. 
 
 Response:
 
