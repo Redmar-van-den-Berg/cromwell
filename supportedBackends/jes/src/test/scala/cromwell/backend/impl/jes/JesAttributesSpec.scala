@@ -3,7 +3,7 @@ package cromwell.backend.impl.jes
 import java.net.URL
 
 import com.typesafe.config.ConfigFactory
-import cromwell.cloudSupport.gcp.GoogleConfiguration
+import cromwell.cloudsupport.gcp.GoogleConfiguration
 import cromwell.core.Tags._
 import lenthall.exception.MessageAggregation
 import org.scalatest.{FlatSpec, Matchers}

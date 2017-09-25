@@ -4,8 +4,8 @@ import akka.actor.ActorSystem
 import com.google.api.gax.retrying.RetrySettings
 import com.google.auth.Credentials
 import com.google.cloud.storage.contrib.nio.CloudStorageConfiguration
-import cromwell.cloudSupport.gcp.auth.GoogleAuthMode
-import cromwell.cloudSupport.gcp.gcs.GcsStorage
+import cromwell.cloudsupport.gcp.auth.GoogleAuthMode
+import cromwell.cloudsupport.gcp.gcs.GcsStorage
 import cromwell.core.WorkflowOptions
 import cromwell.core.path.PathBuilderFactory
 

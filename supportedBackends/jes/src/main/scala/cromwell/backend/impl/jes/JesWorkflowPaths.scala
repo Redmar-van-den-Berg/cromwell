@@ -6,7 +6,7 @@ import com.typesafe.config.Config
 import cromwell.backend.impl.jes.JesAsyncBackendJobExecutionActor.WorkflowOptionKeys
 import cromwell.backend.io.WorkflowPaths
 import cromwell.backend.{BackendJobDescriptorKey, BackendWorkflowDescriptor}
-import cromwell.cloudSupport.gcp.gcs.GcsStorage
+import cromwell.cloudsupport.gcp.gcs.GcsStorage
 import cromwell.core.WorkflowOptions
 import cromwell.core.path.{Path, PathBuilder}
 import cromwell.filesystems.gcs.GcsPathBuilder

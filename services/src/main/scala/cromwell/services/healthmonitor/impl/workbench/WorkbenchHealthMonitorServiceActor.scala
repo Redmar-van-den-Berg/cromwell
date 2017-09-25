@@ -4,9 +4,9 @@ import java.net.URL
 
 import cats.data.Validated.{Invalid, Valid}
 import com.typesafe.config.Config
-import cromwell.cloudSupport.gcp.GoogleConfiguration
-import cromwell.cloudSupport.gcp.gcs.GcsStorage
-import cromwell.cloudSupport.gcp.genomics.GenomicsFactory
+import cromwell.cloudsupport.gcp.GoogleConfiguration
+import cromwell.cloudsupport.gcp.gcs.GcsStorage
+import cromwell.cloudsupport.gcp.genomics.GenomicsFactory
 import cromwell.core.WorkflowOptions
 import cromwell.services.healthmonitor.HealthMonitorServiceActor
 import cromwell.services.healthmonitor.HealthMonitorServiceActor.{MonitoredSubsystem, OkStatus, SubsystemStatus}

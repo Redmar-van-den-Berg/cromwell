@@ -6,8 +6,8 @@ import cats.instances.future._
 import cats.instances.list._
 import cats.syntax.traverse._
 import com.typesafe.config.{Config, ConfigFactory}
-import cromwell.cloudSupport.gcp.GoogleConfiguration
-import cromwell.cloudSupport.gcp.auth.GoogleAuthMode
+import cromwell.cloudsupport.gcp.GoogleConfiguration
+import cromwell.cloudsupport.gcp.auth.GoogleAuthMode
 import cromwell.core.WorkflowOptions
 import cromwell.core.path.{DefaultPathBuilder, PathBuilder}
 import cromwell.filesystems.gcs.GcsPathBuilderFactory

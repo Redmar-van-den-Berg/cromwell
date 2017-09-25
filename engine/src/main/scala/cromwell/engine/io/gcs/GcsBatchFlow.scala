@@ -7,8 +7,8 @@ import akka.stream._
 import akka.stream.scaladsl.{Flow, GraphDSL, MergePreferred, Partition}
 import com.google.api.client.googleapis.batch.BatchRequest
 import com.google.api.client.http.{HttpRequest, HttpRequestInitializer}
-import cromwell.cloudSupport.gcp.GoogleConfiguration
-import cromwell.cloudSupport.gcp.gcs.GcsStorage
+import cromwell.cloudsupport.gcp.GoogleConfiguration
+import cromwell.cloudsupport.gcp.gcs.GcsStorage
 import cromwell.engine.io.IoActor.IoResult
 import cromwell.engine.io.gcs.GcsBatchFlow.BatchFailedException
 import cromwell.engine.io.{IoActor, IoCommandContext}

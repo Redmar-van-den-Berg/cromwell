@@ -1,4 +1,4 @@
-package cromwell.cloudSupport.gcp.genomics
+package cromwell.cloudsupport.gcp.genomics
 
 import java.net.URL
 
@@ -6,7 +6,7 @@ import com.google.api.client.http.{HttpRequest, HttpRequestInitializer}
 import com.google.api.services.genomics.Genomics
 import com.google.auth.Credentials
 import com.google.auth.http.HttpCredentialsAdapter
-import cromwell.cloudSupport.gcp.auth.GoogleAuthMode
+import cromwell.cloudsupport.gcp.auth.GoogleAuthMode
 
 
 case class GenomicsFactory(applicationName: String, authMode: GoogleAuthMode, endpointUrl: URL) {

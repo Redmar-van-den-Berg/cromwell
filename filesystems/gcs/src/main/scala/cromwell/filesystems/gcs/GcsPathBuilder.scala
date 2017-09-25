@@ -8,8 +8,8 @@ import com.google.auth.Credentials
 import com.google.cloud.storage.contrib.nio.{CloudStorageConfiguration, CloudStorageFileSystem, CloudStoragePath}
 import com.google.cloud.storage.{BlobId, StorageOptions}
 import com.google.common.net.UrlEscapers
-import cromwell.cloudSupport.gcp.auth.GoogleAuthMode
-import cromwell.cloudSupport.gcp.gcs.GcsStorage
+import cromwell.cloudsupport.gcp.auth.GoogleAuthMode
+import cromwell.cloudsupport.gcp.gcs.GcsStorage
 import cromwell.core.WorkflowOptions
 import cromwell.core.path.{NioPath, Path, PathBuilder}
 import cromwell.filesystems.gcs.GcsPathBuilder._

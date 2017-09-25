@@ -1,4 +1,4 @@
-package cromwell.cloudSupport.gcp.auth
+package cromwell.cloudsupport.gcp.auth
 
 import java.io.FileNotFoundException
 
@@ -13,7 +13,7 @@ import com.google.auth.Credentials
 import com.google.auth.http.HttpTransportFactory
 import com.google.auth.oauth2.{GoogleCredentials, ServiceAccountCredentials, UserCredentials}
 import com.google.cloud.NoCredentials
-import cromwell.cloudSupport.gcp.auth.ServiceAccountMode.{CredentialFileFormat, JsonFileFormat, PemFileFormat}
+import cromwell.cloudsupport.gcp.auth.ServiceAccountMode.{CredentialFileFormat, JsonFileFormat, PemFileFormat}
 import GoogleAuthMode.checkReadable
 import cromwell.core.WorkflowOptions
 import cromwell.core.retry.Retry

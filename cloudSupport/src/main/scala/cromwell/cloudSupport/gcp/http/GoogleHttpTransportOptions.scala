@@ -1,4 +1,4 @@
-package cromwell.cloudSupport.gcp.http
+package cromwell.cloudsupport.gcp.http
 
 import com.google.cloud.http.HttpTransportOptions
 import scala.concurrent.duration._

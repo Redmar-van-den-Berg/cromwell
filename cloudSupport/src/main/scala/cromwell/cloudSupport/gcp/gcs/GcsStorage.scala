@@ -1,4 +1,4 @@
-package cromwell.cloudSupport.gcp.gcs
+package cromwell.cloudsupport.gcp.gcs
 
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport
 import com.google.api.client.googleapis.media.MediaHttpUploader
@@ -9,8 +9,8 @@ import com.google.api.services.storage.Storage
 import com.google.auth.Credentials
 import com.google.cloud.storage.contrib.nio.CloudStorageConfiguration
 import com.typesafe.config.ConfigFactory
-import cromwell.cloudSupport.gcp.GoogleConfiguration
-import cromwell.cloudSupport.gcp.http.GoogleHttpTransportOptions.TransportOptions
+import cromwell.cloudsupport.gcp.GoogleConfiguration
+import cromwell.cloudsupport.gcp.http.GoogleHttpTransportOptions.TransportOptions
 import net.ceedubs.ficus.Ficus._
 
 object GcsStorage {

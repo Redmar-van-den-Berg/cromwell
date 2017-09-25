@@ -2,8 +2,8 @@ package cromwell.backend.impl.jes
 
 import cromwell.backend.BackendConfigurationDescriptor
 import cromwell.backend.impl.jes.authentication.JesDockerCredentials
-import cromwell.cloudSupport.gcp.GoogleConfiguration
-import cromwell.cloudSupport.gcp.genomics.GenomicsFactory
+import cromwell.cloudsupport.gcp.GoogleConfiguration
+import cromwell.cloudsupport.gcp.genomics.GenomicsFactory
 import cromwell.core.BackendDockerConfiguration
 import cromwell.filesystems.gcs.GcsPathBuilderFactory
 

@@ -9,8 +9,8 @@ import cromwell.backend.BackendWorkflowInitializationActor.{InitializationFailed
 import cromwell.backend.async.RuntimeAttributeValidationFailures
 import cromwell.backend.impl.jes.authentication.{GcsLocalizing, JesAuthObject}
 import cromwell.backend.{BackendConfigurationDescriptor, BackendSpec, BackendWorkflowDescriptor}
-import cromwell.cloudSupport.gcp.GoogleConfiguration
-import cromwell.cloudSupport.gcp.auth.{GoogleAuthModeSpec, RefreshTokenMode, SimpleClientSecrets}
+import cromwell.cloudsupport.gcp.GoogleConfiguration
+import cromwell.cloudsupport.gcp.auth.{GoogleAuthModeSpec, RefreshTokenMode, SimpleClientSecrets}
 import cromwell.core.Dispatcher.BackendDispatcher
 import cromwell.core.Tags.{IntegrationTest, PostWomTest}
 import cromwell.core.{TestKitSuite, WorkflowOptions}

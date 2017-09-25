@@ -4,7 +4,7 @@ import java.util.UUID
 
 import akka.stream.ActorMaterializer
 import akka.testkit.{ImplicitSender, TestActorRef, TestProbe}
-import cromwell.cloudSupport.gcp.auth.ApplicationDefaultMode
+import cromwell.cloudsupport.gcp.auth.ApplicationDefaultMode
 import cromwell.core.Tags.IntegrationTest
 import cromwell.core.io._
 import cromwell.core.{TestKitSuite, WorkflowOptions}

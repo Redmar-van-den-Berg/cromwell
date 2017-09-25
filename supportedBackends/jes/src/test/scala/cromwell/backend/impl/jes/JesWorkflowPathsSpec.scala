@@ -2,7 +2,7 @@ package cromwell.backend.impl.jes
 
 import com.google.cloud.NoCredentials
 import cromwell.backend.BackendSpec
-import cromwell.cloudSupport.gcp.auth.GoogleAuthModeSpec
+import cromwell.cloudsupport.gcp.auth.GoogleAuthModeSpec
 import cromwell.core.TestKitSuite
 import cromwell.util.SampleWdl
 import org.scalatest.{FlatSpecLike, Matchers}

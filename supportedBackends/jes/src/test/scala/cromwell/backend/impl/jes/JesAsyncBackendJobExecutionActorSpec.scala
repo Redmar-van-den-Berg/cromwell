@@ -26,7 +26,7 @@ import cromwell.services.keyvalue.InMemoryKvServiceActor
 import cromwell.services.keyvalue.KeyValueServiceActor.{KvJobKey, KvPair, ScopedKey}
 import cromwell.util.SampleWdl
 import _root_.io.grpc.Status
-import cromwell.cloudSupport.gcp.gcs.GcsStorage
+import cromwell.cloudsupport.gcp.gcs.GcsStorage
 import cromwell.filesystems.gcs.{GcsPath, GcsPathBuilder}
 import org.scalatest._
 import org.scalatest.prop.Tables.Table
