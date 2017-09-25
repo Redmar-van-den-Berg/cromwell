@@ -34,26 +34,23 @@ class WorkbenchHealthMonitorServiceActor(val serviceConfig: Config, globalConfig
   private lazy val Papi = MonitoredSubsystem("PAPI", checkPapi _)
 
   val googleConfig = GoogleConfiguration(globalConfig)
-  val papiBackendName = serviceConfig.as[Option[String]]("services.HealthMonitor.config.PapiBackendName").getOrElse("Jes")
+  val papiBackendName = serviceConfig.as[Option[String]]("services.HealthMonitor.config.papi-backend-name").getOrElse("Jes")
   val papiConfig: Config = globalConfig.as[Config]("backend.providers.Jes.config")
 
+  val googleAuthName = serviceConfig.as[String]("services.HealthMonitor.config.google-auth-name")
+
+  val googleAuth = googleConfig.auth(googleAuthName) match {
+    case Valid(a) => a
+    case Invalid(e) => throw new IllegalArgumentException("Unable to configure WorkbenchHealthMonitor: " + e.toList.mkString(", "))
+  }
+
   /**
-    * Demonstrates connectivity to GCS by stat-ing a public bucket. We use a public bucket as our plethora of auth
-    * modes make it impossible to ensure we would always be able to ping an arbitrary bucket with the credentials
-    * available.
+    * Demonstrates connectivity to GCS by stat-ing a bucket
     */
   private def checkGcs(): Future[SubsystemStatus] = {
     // For any expected production usage of this check, the GCS bucket should be public read */
-    val gcsBucketToCheck = serviceConfig.as[String]("services.HealthMonitor.config.GcsBucketToCheck")
-
-    val gcsAuthName = papiConfig.as[String]("filesystems.gcs.auth")
-
-    val cred = googleConfig.auth(gcsAuthName) match {
-      case Valid(a) => a.credential(WorkflowOptions.empty)
-      case Invalid(e) => throw new IllegalArgumentException("Unable to configure WorkbenchHealthMonitor: " + e.toList.mkString(", "))
-    }
-
-    val storage = cred map { c => GcsStorage.gcsStorage(googleConfig.applicationName, c) }
+    val gcsBucketToCheck = serviceConfig.as[String]("services.HealthMonitor.config.gcs-bucket-to-check")
+    val storage = googleAuth.credential(WorkflowOptions.empty) map { c => GcsStorage.gcsStorage(googleConfig.applicationName, c) }
     storage map { _.buckets.get(gcsBucketToCheck).execute() } as OkStatus
   }
 
@@ -63,14 +60,9 @@ class WorkbenchHealthMonitorServiceActor(val serviceConfig: Config, globalConfig
   private def checkPapi(): Future[SubsystemStatus] = {
     val endpointUrl = new URL(papiConfig.as[String]("genomics.endpoint-url"))
     val papiProjectId = papiConfig.as[String]("project")
-    val papiAuthName = papiConfig.as[String]("genomics.auth")
-    val papiAuthMode = googleConfig.auth(papiAuthName) match {
-      case Valid(a) => a
-      case Invalid(e) => throw new IllegalArgumentException("Unable to configure WorkbenchHealthMonitor: " + e.toList.mkString(", "))
-    }
 
-    val genomicsFactory = GenomicsFactory(googleConfig.applicationName, papiAuthMode, endpointUrl)
-    val genomicsInterface = papiAuthMode.credential(WorkflowOptions.empty) map genomicsFactory.fromCredentials
+    val genomicsFactory = GenomicsFactory(googleConfig.applicationName, googleAuth, endpointUrl)
+    val genomicsInterface = googleAuth.credential(WorkflowOptions.empty) map genomicsFactory.fromCredentials
 
     genomicsInterface map { _.pipelines().list().setProjectId(papiProjectId).setPageSize(1).execute() } as OkStatus
   }

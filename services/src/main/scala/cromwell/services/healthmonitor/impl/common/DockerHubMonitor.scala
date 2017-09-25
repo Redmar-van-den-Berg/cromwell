@@ -32,8 +32,8 @@ trait DockerHubMonitor {
   lazy val DockerHub = MonitoredSubsystem("DockerHub", checkDockerhub _)
 
   /**
-    * Demonstrates connectivity to DockerHub by periodically pulling a small image. Remove the image afterwards in
-    * order to ensure that subsequent attempts aren't showing a false positive
+    * Demonstrates connectivity to Docker Hub by periodically pulling the hash of an image. If the hash is not returned
+    * we assume that there is no connection to Docker Hub.
     */
   private def checkDockerhub(): Future[SubsystemStatus] = {
     dockerHashActor.ask(UbuntuLatestHashRequest).mapTo[DockerHashResponse] map {
